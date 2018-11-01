@@ -1,6 +1,6 @@
 import {createHandleActionFn} from '../../assets/utils'
 const DEFAULT_STATE = {
-  isLogined: false,
+  isLogined: true,
   user: {
     name: 'julian',
     age: 18,
@@ -10,7 +10,7 @@ const DEFAULT_STATE = {
 const handleAction = createHandleActionFn({
   SET_LOGINED(state, action) {
     return Object.assign({}, state, {
-      isLogined: action.isLogined
+      isLogined: action.isLogined || true
     })
   },
   SET_USER_NAME(state, action) {

@@ -13,11 +13,11 @@ export default [
     label: 'A series',
     subMenus: [{
       label: 'PageA',
-      path: '/PageA',
+      path: '/A/PageA',
       component: PageA,
     }, {
       label: 'PageA_1',
-      path: '/PageA_1',
+      path: '/A/PageA_1',
       component: PageA_1,
     }]
   },

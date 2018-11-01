@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import * as actionCreators from '../store/actionCreators'
+import {TextField, MenuItem} from '@material-ui/core'
 
 class Home extends React.Component {
   state = {}
@@ -13,10 +14,11 @@ class Home extends React.Component {
   }
   logout = e => {
     this.props.setLogin(false)
+    this.props.history.push('/sign-in')
   }
   render() {
     
-    const {isLogined, user} = this.props.home
+    const {isLogined, user} = this.props.common
     console.log('rerender', user)
     return <div>
       <h2>Home page</h2>
@@ -33,7 +35,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    home: state.home
+    common: state.common
   }
 }
 
@@ -42,6 +44,5 @@ const mapDispatchToProps = {
   setUserName: actionCreators.setUserName
 }
 
-// export default connect(mapStateToProps, actionCreators)(Home)
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
 

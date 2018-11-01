@@ -58,6 +58,7 @@ class NestListItem extends React.Component {
 class MySidebar extends React.Component {
   render() {
     const {classes} = this.props;
+    console.log(this)
     function getMenuItem (item, i) {
       return item.subMenus ? (<NestListItem  key={i} {...item} />)
       : (<ListItemLink key={i} {...item}/>);

@@ -18,7 +18,9 @@ export function createHandleActionFn(actionMap) {
     const handler = actionMap[type]
 
     if(isFunction(handler)) {
-      return handler(state, action)
+      const newState = handler(state, action)
+      console.log(newState)
+      return newState
     } else {
       // logUtil.warn(`action not found, type: ${type}`) 
       // 即使combineReducer之后，action.type并不是分模块的

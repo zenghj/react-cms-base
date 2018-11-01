@@ -1,16 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route , Router, Switch} from 'react-router-dom';
+
+import PrivateRoute from './components/PrivateRoute'
+
+
 import store from './store';
 import './index.css';
 import App from './App';
+import SignIn from './pages/SignIn'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/" component={App}></Route>
+      <Switch>
+        <Route path="/sign-in" exact component={SignIn}/>
+        <PrivateRoute path="/" component={App} />
+      </Switch>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

@@ -74,11 +74,14 @@ const mapStateToProps = state => ({
 
 export default onEnter(function beforeEnter() {
   return Promise.all([
-    (async function getUserInfo() {
-      const data = await axios.get('/cms/userinfo')
-    })(),
+    axios.get('http://45.62.111.182:3389/mock/cms/userinfo'),
   ])
-}, <ReactLoading/>)(withStyles(styles)(connect(mapStateToProps)(App)))
+  // return new Promise(resolve => {
+  //   setTimeout(() => {
+  //     resolve()
+  //   }, 6000);
+  // })
+}, ReactLoading)(withStyles(styles)(connect(mapStateToProps)(App)))
 // export default 
 // export default connect(mapStateToProps)(withStyles(styles)(App))
 // export default withStyles(styles)(App)
