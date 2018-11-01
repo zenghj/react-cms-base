@@ -6,10 +6,13 @@ import {connect} from 'react-redux'
 
 import MyHeader from './components/MyHeader';
 import MySidebar from './components/MySidebar';
+import onEnter from './components/onEnter'
+import ReactLoading from 'react-loading';
 // import Home from './pages';
 import './App.css';
 import getRoutes from './router'
 import {sidebarWidth} from './assets/dimentions'
+import axios from './plugins/axios'
 
 const styles = theme => {
   window.theme = theme;
@@ -64,9 +67,19 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   sideBarVisible: state.header.sideBarVisible,
+  pageInited: state.header.pageInited,
 })
 
-export default withStyles(styles)(connect(mapStateToProps)(App))
+
+
+export default onEnter(function beforeEnter() {
+  return Promise.all([
+    (async function getUserInfo() {
+      const data = await axios.get('/cms/userinfo')
+    })(),
+  ])
+}, <ReactLoading/>)(withStyles(styles)(connect(mapStateToProps)(App)))
+// export default 
 // export default connect(mapStateToProps)(withStyles(styles)(App))
 // export default withStyles(styles)(App)
 // export default connect(mapStateToProps)(App)
