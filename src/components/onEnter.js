@@ -14,7 +14,7 @@ const styles = theme => ({
       zIndex: 9999,
       // background: 
     },
-    '* .loading': {
+    '& .loading': {
       position: 'absolute',
       left: '50%',
       top: '50%',

@@ -1,7 +1,7 @@
 import React from 'react';
 import {List, ListItem, ListItemText, withStyles, Collapse} from '@material-ui/core'
-import {ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon} from '@material-ui/icons'
-import {Link} from 'react-router-dom'
+import {ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon, History} from '@material-ui/icons'
+import {Link, withRouter} from 'react-router-dom'
 
 import classnames from 'classnames'
 import menus from '../assets/menus'
@@ -27,6 +27,15 @@ function ListItemLink(props) {
 class NestListItem extends React.Component {
   state = {
     open: false
+  }
+  UNSAFE_componentWillMount() {
+    let history = this.props.history || {}
+    let pathname = history.location.pathname
+    console.log(pathname)
+    let open = this.props.subMenus.map(item => item.path).includes(pathname)
+    this.setState({
+      open
+    })
   }
   toggle = (e) => {
     this.setSubmenuVisible(!this.state.open);
@@ -54,13 +63,14 @@ class NestListItem extends React.Component {
     </React.Fragment>
   }
 }
+const WithRouterNestListItem = withRouter(NestListItem)
 
 class MySidebar extends React.Component {
   render() {
     const {classes} = this.props;
     console.log(this)
     function getMenuItem (item, i) {
-      return item.subMenus ? (<NestListItem  key={i} {...item} />)
+      return item.subMenus ? (<WithRouterNestListItem  key={i} {...item} />)
       : (<ListItemLink key={i} {...item}/>);
     }
     return <aside className={classnames(classes.root)}>
