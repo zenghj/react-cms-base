@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withStyles, Paper } from '@material-ui/core';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import classnames from 'classnames';
+import {connect} from 'react-redux'
 
 import MyHeader from './components/MyHeader';
 import MySidebar from './components/MySidebar';
 // import Home from './pages';
 import './App.css';
 import getRoutes from './router'
+import {sidebarWidth} from './assets/dimentions'
 
 const styles = theme => {
   window.theme = theme;
@@ -25,25 +27,31 @@ const styles = theme => {
       marginRight: unit
     },
     mainBody: {
+      position: 'relative',
       flexGrow: 1,
       marginTop: unit * 2,
       marginRight: unit * 2,
       marginBottom: unit * 2,
       padding: unit * 2,
-      minHeight: 400
+      minHeight: 400,
+      transition: 'margin-left 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms',
+      zIndex: 10,
+      '&.slide-left': {
+        marginLeft: -sidebarWidth,
+      }
     }
   };
 };
 
 class App extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, sideBarVisible = true } = this.props;
     return (
       <div className={classnames(classes.root, 'App')}>
         <MyHeader />
         <main className="main-container">
           <MySidebar />
-          <Paper className={classes.mainBody}>
+          <Paper className={classnames(classes.mainBody, sideBarVisible ? '' : 'slide-left')}>
             <Switch>
               {getRoutes().map((route, i) => (<Route exact key={i} path={route.path} component={route.component} />))}
             </Switch>
@@ -54,4 +62,11 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App);
+const mapStateToProps = state => ({
+  sideBarVisible: state.header.sideBarVisible,
+})
+
+export default withStyles(styles)(connect(mapStateToProps)(App))
+// export default connect(mapStateToProps)(withStyles(styles)(App))
+// export default withStyles(styles)(App)
+// export default connect(mapStateToProps)(App)

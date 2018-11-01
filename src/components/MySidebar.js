@@ -2,21 +2,17 @@ import React from 'react';
 import {List, ListItem, ListItemText, withStyles, Collapse} from '@material-ui/core'
 import {ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon} from '@material-ui/icons'
 import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+
 import classnames from 'classnames'
 import menus from '../assets/menus'
+import {sidebarWidth} from '../assets/dimentions'
 
 const styles = theme => {
   let unit = theme.spacing.unit;
   return {
     root: {
-      width: 200,
+      width: sidebarWidth,
       margin: `${unit}px ${unit}px 0 0`,
-      transition: 'width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms',
-      overflow: 'hidden',
-      '&.collapsed': {
-        width: 0,
-      }
     },
   }
 }
@@ -61,12 +57,12 @@ class NestListItem extends React.Component {
 
 class MySidebar extends React.Component {
   render() {
-    const {classes, sideBarVisible} = this.props;
+    const {classes} = this.props;
     function getMenuItem (item, i) {
       return item.subMenus ? (<NestListItem  key={i} {...item} />)
       : (<ListItemLink key={i} {...item}/>);
     }
-    return <aside className={classnames(classes.root, sideBarVisible ? '' : 'collapsed')}>
+    return <aside className={classnames(classes.root)}>
       <List>
         {menus.map((item, i) => getMenuItem(item, i))}
       </List>
@@ -74,10 +70,4 @@ class MySidebar extends React.Component {
   }
 }
 
-
-const mapStateToProps = state => ({
-  sideBarVisible: state.header.sideBarVisible,
-})
-
-
-export default withStyles(styles)(connect(mapStateToProps)(MySidebar))
+export default withStyles(styles)(MySidebar)
