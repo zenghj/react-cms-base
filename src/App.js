@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, Paper } from '@material-ui/core';
+import { withStyles, Paper, LinearProgress } from '@material-ui/core';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import {connect} from 'react-redux'
@@ -25,6 +25,20 @@ const styles = theme => {
         flexDirection: 'row'
       }
     },
+    progressBar: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 9999,
+    },
+    progressColorPrimary: {
+      backgroundColor: '#ffc107',
+    },
+    progressBarColorPrimary: {
+      backgroundColor: '#FF9800',
+    },
+
     sideNavs: {
       width: 200,
       marginRight: unit
@@ -48,9 +62,15 @@ const styles = theme => {
 
 class App extends Component {
   render() {
-    const { classes, sideBarVisible = true } = this.props;
+    const { classes, sideBarVisible = true, isProgressBarVisible = false } = this.props;
     return (
       <div className={classnames(classes.root, 'App')}>
+        {isProgressBarVisible && <LinearProgress
+          className={classes.progressBar} 
+          classes={{
+            colorPrimary: classes.progressColorPrimary,
+            barColorPrimary: classes.progressBarColorPrimary,
+          }}/>}
         <MyHeader />
         <main className="main-container">
           <MySidebar />
@@ -66,8 +86,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  sideBarVisible: state.header.sideBarVisible,
-  pageInited: state.header.pageInited,
+  sideBarVisible: state.common.sideBarVisible,
+  pageInited: state.common.pageInited,
+  isProgressBarVisible: state.common.isProgressBarVisible
 })
 
 

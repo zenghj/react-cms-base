@@ -1,4 +1,4 @@
-import {TOGGLE_SIDEBAR_VISIBLE} from '../actionTypes'
+import {TOGGLE_SIDEBAR_VISIBLE, SET_PROGRESS_BAR_VISIBLE} from '../actionTypes'
 export function setLogin(isLogined) {
   return {
     type: 'SET_LOGINED',
@@ -16,5 +16,19 @@ export function setLogin(isLogined) {
 export function toggleSidebar() {
   return {
     type: TOGGLE_SIDEBAR_VISIBLE
+  }
+}
+
+export function hideProgressBar() {
+  return {
+    type: SET_PROGRESS_BAR_VISIBLE,
+    visible: false,
+  }
+}
+
+export function showProgressBar() {
+  return {
+    type: SET_PROGRESS_BAR_VISIBLE,
+    visible: true,
   }
 }

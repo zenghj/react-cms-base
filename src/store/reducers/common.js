@@ -1,10 +1,15 @@
 import {createHandleActionFn} from '../../assets/utils'
+import {TOGGLE_SIDEBAR_VISIBLE, SET_PAGE_INITED,SET_PROGRESS_BAR_VISIBLE} from '../actionTypes'
+
 const DEFAULT_STATE = {
   isLogined: true,
+  isProgressBarVisible: false,
   user: {
     name: 'julian',
     age: 18,
-  }
+  },
+  sideBarVisible: true,
+  pageInited: false,
 }
 
 const handleAction = createHandleActionFn({
@@ -17,6 +22,24 @@ const handleAction = createHandleActionFn({
     const retState = {...state}
     retState.user.name = action.name
     return retState
+  },
+  [SET_PROGRESS_BAR_VISIBLE](state, action) {
+    return {
+      ...state,
+      isProgressBarVisible: action.visible
+    }
+  },
+  [TOGGLE_SIDEBAR_VISIBLE](state) {
+    return {
+      ...state,
+      sideBarVisible: !state.sideBarVisible
+    }
+  },
+  [SET_PAGE_INITED](state, inited = true) {
+    return {
+      ...state,
+      pageInited: inited,
+    }
   }
 })
 export default function homeReducer(state = DEFAULT_STATE, action) {

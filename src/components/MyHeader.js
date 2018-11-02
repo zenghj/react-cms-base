@@ -34,7 +34,7 @@ class MyHeader extends React.Component {
     // this.props.history.push('/sign-in')
   }
   render() {
-    const { classes, toggleSidebarRx, headerRx, commonRx} = this.props;
+    const { classes, toggleSidebarRx, commonRx} = this.props;
     return (
       <div className={classes.root}>
         <AppBar>
@@ -45,7 +45,7 @@ class MyHeader extends React.Component {
               aria-label="Menu"
               onClick={toggleSidebarRx}
             >
-              <MenuIcon className={classnames(headerRx.sideBarVisible ? '' : 'rotated', 'menu-icon')}/>
+              <MenuIcon className={classnames(commonRx.sideBarVisible ? '' : 'rotated', 'menu-icon')}/>
             </IconButton>
             <h1 className={classes.title}>内容管理系统</h1>
             <span>{commonRx.user.name}</span>
@@ -61,7 +61,6 @@ class MyHeader extends React.Component {
 
 // };
 const mapStateToProps = state => ({
-  headerRx: state.header,
   commonRx: state.common
 })
 

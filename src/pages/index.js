@@ -2,8 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import * as actionCreators from '../store/actionCreators'
 import {TextField, MenuItem} from '@material-ui/core'
+import RouteComponent from '../components/RouteComponent'
 
-class Home extends React.Component {
+
+class Home extends RouteComponent {
   state = {}
   componentDidMount() {
     console.log(this)
