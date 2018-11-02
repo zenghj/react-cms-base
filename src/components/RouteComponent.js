@@ -41,6 +41,9 @@ class RouteComponent extends React.Component {
     }
     
   }
+  componentWillUnmount() {
+    this.finish();
+  }
 
   finish = () => {
     this.hideProgressBar()
