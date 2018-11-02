@@ -53,6 +53,7 @@ const styles = theme => {
       minHeight: 400,
       transition: 'margin-left 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms',
       zIndex: 10,
+      wordBreak: 'break-all',
       '&.slide-left': {
         marginLeft: -sidebarWidth,
       }

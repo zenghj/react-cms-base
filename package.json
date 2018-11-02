@@ -139,5 +139,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "proxy": "http://45.62.111.182:3389/mock"
 }

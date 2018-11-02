@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from '../plugins/axios'
+import axios from 'Plugins/axios'
 import RouteComponent from '../components/RouteComponent'
 
 export default class PageB extends RouteComponent {
@@ -10,8 +10,11 @@ export default class PageB extends RouteComponent {
       userInfo
     }
   }
+  // UNSAFE_componentWillMount() {
+  //   console.log('被覆盖了')
+  // }
   render() {
-    return this.isAsyncFinish() && (<div>
+    return this.isAsyncFinished() && (<div>
         <h3>PageB</h3>
         <p>Hello {this.state.userInfo.name}! welcome~~</p>
       </div>)

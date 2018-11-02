@@ -5,16 +5,19 @@ import {isFunction, error} from '../assets/utils'
 
 class RouteComponent extends React.Component {
   state = {
-    // _finish: false,
+    _finish: false,
   }
 
   UNSAFE_componentWillMount() {
     let asyncData = this.asyncData
-    // this.render = () => {
-    //   let render = this.asyncRender
-    //   return this.state._finish ? render.call(this) : null;
-    // }
+
     if(isFunction(asyncData)) {
+      // if(!this.render && isFunction(this.asyncRender)) {
+      //   this.render = () => {
+      //     let asyncRender = this.asyncRender
+      //     return this.state._finish ? asyncRender.call(this) : null;
+      //   }
+      // }
       this.showProgressBar()
       let promise = asyncData.call(this, this.props)
       if(promise && promise.then) {
@@ -52,7 +55,7 @@ class RouteComponent extends React.Component {
     })
   }
 
-  isAsyncFinish = () => {
+  isAsyncFinished = () => {
     return (isFunction(this.asyncData) && this.state._finish) 
       || !isFunction(this.asyncData)
   }
@@ -61,6 +64,12 @@ class RouteComponent extends React.Component {
   }
   hideProgressBar = () => {
     store.dispatch(hideProgressBar())
+  }
+
+  // 父组件render，如果子组件提供了asyncRender方法，则使用asyncRender，否则子组件的render方法会覆盖此方法
+  render() {
+    let asyncRender = this.asyncRender
+    return this.state._finish ? asyncRender.call(this) : null;
   }
 }
 

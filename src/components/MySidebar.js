@@ -11,9 +11,11 @@ const styles = theme => {
   let unit = theme.spacing.unit;
   return {
     root: {
-      width: sidebarWidth,
       margin: `${unit}px ${unit}px 0 0`,
     },
+    list: {
+      width: sidebarWidth,
+    }
   }
 }
 function ListItemLink(props) {
@@ -74,7 +76,7 @@ class MySidebar extends React.Component {
       : (<ListItemLink key={i} {...item}/>);
     }
     return <aside className={classnames(classes.root)}>
-      <List>
+      <List className={classes.list}>
         {menus.map((item, i) => getMenuItem(item, i))}
       </List>
     </aside>

@@ -6,6 +6,7 @@ import RouteComponent from '../components/RouteComponent'
 
 
 class Home extends RouteComponent {
+  
   state = {}
   componentDidMount() {
     console.log(this)
@@ -19,7 +20,6 @@ class Home extends RouteComponent {
     this.props.history.push('/sign-in')
   }
   render() {
-    
     const {isLogined, user} = this.props.common
     console.log('rerender', user)
     return <div>

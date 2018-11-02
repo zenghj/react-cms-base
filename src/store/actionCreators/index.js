@@ -32,3 +32,10 @@ export function showProgressBar() {
     visible: true,
   }
 }
+
+export function setPageAlist(list) {
+  return {
+    type: 'SET_PAGE_A_LIST',
+    list,
+  }
+}

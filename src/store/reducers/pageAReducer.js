@@ -1,6 +1,7 @@
 import {createHandleActionFn} from '../../assets/utils'
 const DEFAULT_STATE = {
-  pageName: 'pageA'
+  pageName: 'pageA',
+  list: [],
 }
 
 const handleAction = createHandleActionFn({
@@ -8,6 +9,12 @@ const handleAction = createHandleActionFn({
     return Object.assign({}, state, {
       pageName: action.pageName
     })
+  },
+  SET_PAGE_A_LIST(state, action) {
+    return {
+      ...state, 
+      list: action.list || [],
+    }
   }
 })
 export default function (state = DEFAULT_STATE, action) {
