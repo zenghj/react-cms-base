@@ -1,5 +1,5 @@
 export function error(...args) {
-  return console.error(...args)
+  return console.error('[CMS]: ', ...args)
 }
 
 export function warn(...args) {

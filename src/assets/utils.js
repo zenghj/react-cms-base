@@ -1,3 +1,4 @@
+import {error} from './log'
 // import logUtil from './log'
 export * from './log'
 
@@ -29,4 +30,17 @@ export function createHandleActionFn(actionMap) {
       return state;
     }
   };
+}
+
+export function assert(detectFn, ...rest) {
+  if(isFunction(detectFn)) {
+    let ret = detectFn(...rest)
+    if(!ret) {
+      error('assertion not pass', `judgement fn: ${detectFn.name || 'anonymous'}`, 'Target: ', rest)
+    }
+    return !!ret;
+  } else {
+    error('the first argument of assert should be a judgement function')
+    return false
+  }
 }

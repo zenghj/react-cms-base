@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'Plugins/axios'
 import RouteComponent from '../components/RouteComponent'
 
+// 这个是一个使用继承的例子，不推荐使用RouteComponent
 export default class PageB extends RouteComponent {
   state = {}
   asyncData = async (props) => {
