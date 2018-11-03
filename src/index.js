@@ -6,6 +6,7 @@ import { BrowserRouter, Route , Router, Switch} from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute'
 
 
+
 import store from './store';
 import './index.css';
 import App from './App';
@@ -16,7 +17,8 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route path="/sign-in" exact component={SignIn}/>
+        {/* Route的顺序是有影响的 */}
+        <Route path="/sign-in" exact component={SignIn}/> 
         <PrivateRoute path="/" component={App} />
       </Switch>
     </BrowserRouter>

@@ -2,6 +2,7 @@ import React from 'react'
 import {hideProgressBar, showProgressBar} from '../store/actionCreators'
 import {isFunction, error, assert} from '../assets/utils'
 import {connect} from 'react-redux'
+import ErrorBoundary from './ErrorBoundary'
 
 
 const withAsyncData = fetchAsyncData => Target => {
@@ -52,7 +53,7 @@ const withAsyncData = fetchAsyncData => Target => {
       this.finish()
     }
     render() {
-      return this.state.finish ? <Target asyncData={this.state.asyncData} {...this.props}/> : null;
+      return this.state.finish ? <ErrorBoundary><Target asyncData={this.state.asyncData} {...this.props}/></ErrorBoundary> : null;
     }
   }
 

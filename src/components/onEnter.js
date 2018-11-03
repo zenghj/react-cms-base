@@ -37,6 +37,10 @@ export default (beforeEnter, LoadingComponent) => Target => {
           this.setState({
             done: true,
           })
+        }).catch(err => {
+          this.setState({
+            done: true,
+          })
         })
       } else {
         this.setState({

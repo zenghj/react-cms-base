@@ -13,6 +13,7 @@ import './App.css';
 import {getRoutesConfig} from 'Config'
 import {sidebarWidth} from './assets/dimentions'
 import axios from './plugins/axios'
+import NoMatch from 'Components/NoMatch'
 
 const styles = theme => {
   window.theme = theme;
@@ -81,6 +82,7 @@ class App extends Component {
           <Paper className={classnames(classes.mainBody, sideBarVisible ? '' : 'slide-left')}>
             <Switch>
               {getRoutesConfig().map((route, i) => (<Route exact key={i} path={route.path} component={route.component} />))}
+              <Route component={NoMatch}></Route>
             </Switch>
           </Paper>
         </main>
@@ -100,7 +102,10 @@ const mapStateToProps = state => ({
 export default onEnter(function beforeEnter() {
   return Promise.all([
     axios.get('http://45.62.111.182:3389/mock/cms/userinfo'),
-  ])
+  ]).then(datas => {
+    // save initial data to store 
+    console.log(datas)
+  })
   // return new Promise(resolve => {
   //   setTimeout(() => {
   //     resolve()
