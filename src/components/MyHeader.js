@@ -4,6 +4,7 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 import {connect} from 'react-redux'
 import classnames from 'classnames'
 import * as actionCreators from '../store/actionCreators'
+import {appConfig} from 'Config'
 
 const styles = theme => ({
   root: {
@@ -47,7 +48,7 @@ class MyHeader extends React.Component {
             >
               <MenuIcon className={classnames(commonRx.sideBarVisible ? '' : 'rotated', 'menu-icon')}/>
             </IconButton>
-            <h1 className={classes.title}>内容管理系统</h1>
+            <h1 className={classes.title}>{appConfig.title}</h1>
             <span>{commonRx.user.name}</span>
             <Button onClick={this.signOut} className="white">Sign Out</Button>
           </Toolbar>

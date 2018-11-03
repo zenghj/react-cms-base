@@ -1,8 +1,8 @@
 // import React from 'react'
 // import {BrowserRouter, Route, Link} from 'react-router-dom'
 
-import menuConfig from '../assets/menus'
-import {isArray} from '../assets/utils'
+import menuConfig from 'Assets/menus'
+import {isArray} from 'Assets/utils'
 
 function walkMenu (menus) {
   let routes = []
@@ -21,7 +21,7 @@ function walkMenu (menus) {
   }
   return routes
 }
-export default function getRoutes(extraRoutes) {
+export default function getRoutesConfig(extraRoutes) {
   // menuConfig
   let routes = []
   if(isArray(extraRoutes)) {
@@ -32,7 +32,3 @@ export default function getRoutes(extraRoutes) {
   // console.log(routes)
   return routes
 }
-
-
-
-

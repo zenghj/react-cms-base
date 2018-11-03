@@ -10,7 +10,7 @@ import onEnter from './components/onEnter'
 import ReactLoading from 'react-loading';
 // import Home from './pages';
 import './App.css';
-import getRoutes from './router'
+import {getRoutesConfig} from 'Config'
 import {sidebarWidth} from './assets/dimentions'
 import axios from './plugins/axios'
 
@@ -80,7 +80,7 @@ class App extends Component {
           <MySidebar />
           <Paper className={classnames(classes.mainBody, sideBarVisible ? '' : 'slide-left')}>
             <Switch>
-              {getRoutes().map((route, i) => (<Route exact key={i} path={route.path} component={route.component} />))}
+              {getRoutesConfig().map((route, i) => (<Route exact key={i} path={route.path} component={route.component} />))}
             </Switch>
           </Paper>
         </main>

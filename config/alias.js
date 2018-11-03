@@ -7,4 +7,5 @@ module.exports = {
   'Plugins': resolve(__dirname, '../src/plugins/'),
   'Components': resolve(__dirname, '../src/components/'),
   'Store': resolve(__dirname, '../src/store/'),
+  'Config': resolve(__dirname, '../src/config/'),
 }
