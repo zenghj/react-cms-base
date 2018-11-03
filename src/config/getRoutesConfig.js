@@ -1,7 +1,7 @@
 // import React from 'react'
 // import {BrowserRouter, Route, Link} from 'react-router-dom'
 
-import menuConfig from 'Assets/menus'
+import menuConfig from 'Config/menus'
 import {isArray} from 'Assets/utils'
 
 function walkMenu (menus) {

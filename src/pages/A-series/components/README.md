@@ -1,0 +1,1 @@
+You can create components directory to place component just used in specific page.

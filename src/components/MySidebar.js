@@ -4,7 +4,7 @@ import {ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon, History} fro
 import {Link, withRouter} from 'react-router-dom'
 
 import classnames from 'classnames'
-import menus from '../assets/menus'
+import menus from '../config/menus'
 import {sidebarWidth} from '../assets/dimentions'
 
 const styles = theme => {
