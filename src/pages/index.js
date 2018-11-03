@@ -4,7 +4,7 @@ import * as actionCreators from '../store/actionCreators'
 import {TextField, MenuItem} from '@material-ui/core'
 import RouteComponent from '../components/RouteComponent'
 
-
+console.log('home change')
 class Home extends RouteComponent {
   
   state = {}

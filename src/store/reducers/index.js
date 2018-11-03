@@ -5,7 +5,6 @@ import pageA_1 from './pageA_1Reducer'
 import pageB from './pageBReducer'
 import pageC from './pageC'
 
-
 const rootReducer = combineReducers({
   common,
   pageA,
