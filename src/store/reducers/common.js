@@ -24,10 +24,12 @@ const handleAction = createHandleActionFn({
     return retState
   },
   [SET_PROGRESS_BAR_VISIBLE](state, action) {
-    return {
-      ...state,
-      isProgressBarVisible: action.visible
+    let nextState = {...state}
+    if(nextState.isProgressBarVisible !== action.visible) {
+      // console.log('SET_PROGRESS_BAR_VISIBLE', action.visible)
+      nextState.isProgressBarVisible = action.visible
     }
+    return nextState
   },
   [TOGGLE_SIDEBAR_VISIBLE](state) {
     return {

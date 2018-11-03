@@ -29,7 +29,7 @@ export default function getRoutes(extraRoutes) {
   }
   let menuRoutes = walkMenu(menuConfig);
   routes = [...menuRoutes, ...routes]
-  console.log(routes)
+  // console.log(routes)
   return routes
 }
 

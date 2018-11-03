@@ -23,7 +23,7 @@ const withAsyncData = fetchAsyncData => Target => {
             this.finish()
           }).catch(err => {
             error(err);
-            this.caughtError()
+            this.caughtError('fetch async data error!')
           })
         } else {
           setTimeout(() => {
@@ -37,7 +37,8 @@ const withAsyncData = fetchAsyncData => Target => {
     }
 
     componentWillUnmount() {
-      this.finish()
+      // console.log('componentWillUnmount')
+      // this.finish()
     }
 
     finish = () => {

@@ -20,7 +20,7 @@ export function createHandleActionFn(actionMap) {
 
     if(isFunction(handler)) {
       const newState = handler(state, action)
-      console.log(newState)
+      // console.log(newState)
       return newState
     } else {
       // logUtil.warn(`action not found, type: ${type}`) 

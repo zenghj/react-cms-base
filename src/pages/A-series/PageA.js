@@ -13,7 +13,7 @@ const fetchAsyncData = async () => {
 class PageA extends React.Component {
 
   render() {
-    console.log(this)
+    // console.log(this)
     const {list} = this.props.asyncData
     return <div>
       <h3>PageA</h3>

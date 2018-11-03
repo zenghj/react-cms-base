@@ -1,14 +1,15 @@
 import {createHandleActionFn} from 'Assets/utils'
-import {DEMO} from '../actionTypes'
+import {UPDATE_PAGE_C} from '../actionTypes'
 const DEFAULT_STATE = {
-  demo: 'Hello world'
+  content: 'Hello world'
 }
 
 const handleAction = createHandleActionFn({
-  SET_DEMO(state, action) {
-    return Object.assign({}, state, {
-      demo: action.demo
-    })
+  [UPDATE_PAGE_C](state, action) {
+    return {
+      ...state,
+      ...action.data
+    }
   },
 })
 export default function (state = DEFAULT_STATE, action) {

@@ -33,7 +33,7 @@ class NestListItem extends React.Component {
   UNSAFE_componentWillMount() {
     let history = this.props.history || {}
     let pathname = history.location.pathname
-    console.log(pathname)
+    // console.log(pathname)
     let open = this.props.subMenus.map(item => item.path).includes(pathname)
     this.setState({
       open
@@ -70,7 +70,7 @@ const WithRouterNestListItem = withRouter(NestListItem)
 class MySidebar extends React.Component {
   render() {
     const {classes} = this.props;
-    console.log(this)
+    // console.log(this)
     function getMenuItem (item, i) {
       return item.subMenus ? (<WithRouterNestListItem  key={i} {...item} />)
       : (<ListItemLink key={i} {...item}/>);

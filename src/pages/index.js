@@ -9,7 +9,7 @@ class Home extends RouteComponent {
   
   state = {}
   componentDidMount() {
-    console.log(this)
+    // console.log(this)
     window.TEST = this;
   }
   login = e => {
@@ -21,7 +21,7 @@ class Home extends RouteComponent {
   }
   render() {
     const {isLogined, user} = this.props.common
-    console.log('rerender', user)
+    // console.log('rerender', user)
     return <div>
       <h2>Home page</h2>
       { isLogined && <p>

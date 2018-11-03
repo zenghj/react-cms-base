@@ -3,6 +3,7 @@ import {hideProgressBar, showProgressBar} from '../store/actionCreators'
 import store from '../store'
 import {isFunction, error} from '../assets/utils'
 
+// 强烈建议不使用这种方式
 class RouteComponent extends React.Component {
   state = {
     _finish: false,
