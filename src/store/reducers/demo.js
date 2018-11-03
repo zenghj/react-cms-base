@@ -1,3 +1,7 @@
+/**
+ * this is a demo
+ */
+
 import {createHandleActionFn} from 'Assets/utils'
 import {DEMO} from '../actionTypes'
 const DEFAULT_STATE = {
