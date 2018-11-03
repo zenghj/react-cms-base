@@ -1,1 +1,1 @@
-export const sidebarWidth = 200
+export const sidebarWidth = 250

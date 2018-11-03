@@ -1,6 +1,9 @@
 import {SET_PROGRESS_BAR_VISIBLE} from '../actionTypes'
 
-const delay_ms = 200
+const config = {
+  delay_ms: 100, // 延迟处理progress的时间，防抖
+}
+
 let progressBarQueue = []
 let timer = null
 function isFinalVisible(queue) {
@@ -29,7 +32,7 @@ function handleProgressBarQueue (dispatch, visible) {
     })
     timer = null
     progressBarQueue = []
-  }, delay_ms)
+  }, config.delay_ms)
 }
 
 export function hideProgressBar() {

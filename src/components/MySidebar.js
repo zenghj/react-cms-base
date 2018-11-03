@@ -12,6 +12,7 @@ const styles = theme => {
   return {
     root: {
       margin: `${unit}px ${unit}px 0 0`,
+      wordBreak: 'break-all',
     },
     list: {
       width: sidebarWidth,
@@ -20,7 +21,7 @@ const styles = theme => {
 }
 function ListItemLink(props) {
   return <Link to={props.path} key={props.i}>
-  <ListItem button>
+  <ListItem button dense>
     <ListItemText>{props.label}</ListItemText>
   </ListItem> 
   </Link> 
@@ -51,7 +52,7 @@ class NestListItem extends React.Component {
   render() {
     const {label, subMenus} = this.props
     return <React.Fragment>
-      <ListItem button onClick={this.toggle}>
+      <ListItem dense button onClick={this.toggle}>
         <ListItemText>{label}</ListItemText>
         {this.state.open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </ListItem>

@@ -66,7 +66,7 @@ class App extends Component {
   render() {
    
     const { classes, sideBarVisible = true, isProgressBarVisible = false } = this.props;
-    console.log('App render, isProgressBarVisible' , isProgressBarVisible)
+    // console.log('App render, isProgressBarVisible' , isProgressBarVisible)
     return (
       <div className={classnames(classes.root, 'App')}>
         {isProgressBarVisible && <LinearProgress
